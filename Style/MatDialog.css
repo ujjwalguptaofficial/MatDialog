@@ -1,0 +1,17 @@
+.modal-header {
+    padding: 4px 0px;
+    height: 37px;
+}
+
+.modal-header .header-close-icon {
+    float: right;
+    padding-right: 5px;
+}
+
+.modal-header .header-text {
+    vertical-align: super;
+}
+
+.modal .modal-content {
+    padding: 20px 10px;
+}

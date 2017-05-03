@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <meta charset="utf-8" />
+    <title>JsStorage Example</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1.0">
+    <link href="materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
+    <script src="script/jquery.js"></script>
+    <script src="materialize/js/materialize.min.js"></script>
+    <link href="../style/matdialog.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body>
+    <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+    <a class="waves-effect waves-light btn" href="#alert">Alert</a>
+    <div id="modal1" class="modal">
+        <div class="modal-header">
+            <i class="material-icons">&#xE001;</i>
+            <span class="header-text">Alert</span>
+            <i class="modal-action modal-close material-icons right-align header-close-icon">&#xE5CD;</i>
+        </div>
+        <div class="divider"></div>
+        <div class="modal-content">
+            Created successfully
+        </div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn">Agree</a>
+        </div>
+    </div>
+    <div id="alert" class="modal">
+        <div class="modal-header">
+            <i class="modal-action modal-close material-icons right-align header-close-icon">&#xE5CD;</i>
+        </div>
+        <div class="divider"></div>
+        <div class="modal-content">
+            Created successfully
+        </div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-action modal-close waves-effect waves-green btn">OK</a>
+        </div>
+    </div>
+    <div id="divMatDialog">
+        <div id="alert" class="modal">
+            <div class="modal-header"><i class="modal-action modal-close material-icons right-align header-close-icon"></i></div>
+            <div class="divider"></div>
+            <div class="modal-content">No Customer Found</div>
+            <div class="divider"></div>
+            <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-green btn">OK</a></div>
+        </div>
+    </div>
+    <script>
+        $(document).ready(function () {
+            // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+            $('.modal').modal({
+                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                opacity: .5, // Opacity of modal background
+                inDuration: 300, // Transition in duration
+                outDuration: 200, // Transition out duration
+                startingTop: '2%', // Starting top style attribute
+                endingTop: '2%', // Ending top style attribute
+                ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    console.log(modal, trigger);
+                },
+                complete: function () {
+                    // alert('Closed');
+                } // Callback for Modal close
+            });
+        });
+    </script>
+</body>
+
+</html>
