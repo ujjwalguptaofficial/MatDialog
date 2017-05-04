@@ -15,3 +15,7 @@
 .modal .modal-content {
     padding: 20px 10px;
 }
+
+.confirm-btn-ok {
+    margin-right: 8px !important;
+}

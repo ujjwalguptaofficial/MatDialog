@@ -9,12 +9,14 @@
     <link href="materialize/css/materialize.min.css" rel="stylesheet" type="text/css" />
     <script src="script/jquery.js"></script>
     <script src="materialize/js/materialize.min.js"></script>
+    <script src="../outputfile/matdialog.js"></script>
     <link href="../style/matdialog.css" rel="stylesheet" type="text/css" />
 </head>
 
 <body>
     <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
     <a class="waves-effect waves-light btn" href="#alert">Alert</a>
+    <a class="waves-effect waves-light btn" href="#confirm">confirm</a>
     <div id="modal1" class="modal">
         <div class="modal-header">
             <i class="material-icons">&#xE001;</i>
@@ -43,33 +45,39 @@
             <a href="#!" class="modal-action modal-close waves-effect waves-green btn">OK</a>
         </div>
     </div>
-    <div id="divMatDialog">
-        <div id="alert" class="modal">
-            <div class="modal-header"><i class="modal-action modal-close material-icons right-align header-close-icon"></i></div>
-            <div class="divider"></div>
-            <div class="modal-content">No Customer Found</div>
-            <div class="divider"></div>
-            <div class="modal-footer"><a href="#!" class="modal-action modal-close waves-effect waves-green btn">OK</a></div>
+
+    <div id="confirm" class="modal">
+        <div class="modal-header"><i class="modal-action modal-close material-icons right-align header-close-icon"></i></div>
+        <div class="divider"></div>
+        <div class="modal-content">No Customer Found</div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="#!" class="btn waves-effect waves-green confirm-btn-cancel">Cancel</a>
+            <a href="#!" class="btn waves-effect waves-green confirm-btn-ok">OK</a>
         </div>
     </div>
+
     <script>
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
             $('.modal').modal({
-                dismissible: false, // Modal can be dismissed by clicking outside of the modal
+                dismissible: true, // Modal can be dismissed by clicking outside of the modal
                 opacity: .5, // Opacity of modal background
                 inDuration: 300, // Transition in duration
                 outDuration: 200, // Transition out duration
                 startingTop: '2%', // Starting top style attribute
                 endingTop: '2%', // Ending top style attribute
                 ready: function (modal, trigger) { // Callback for Modal open. Modal and trigger parameters available.
+                    console.log('ready');
                     console.log(modal, trigger);
                 },
-                complete: function () {
+                complete: function (a, b) {
                     // alert('Closed');
+                    console.log(b);
                 } // Callback for Modal close
             });
         });
+       
     </script>
 </body>
 
