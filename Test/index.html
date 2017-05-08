@@ -14,9 +14,10 @@
 </head>
 
 <body>
-    <a class="waves-effect waves-light btn" href="#modal1">Modal</a>
+    <!--<a class="waves-effect waves-light btn" href="#modal1">Modal</a>
     <a class="waves-effect waves-light btn" href="#alert">Alert</a>
     <a class="waves-effect waves-light btn" href="#confirm">confirm</a>
+    <a class="waves-effect waves-light btn" href="#prompt">prompt</a>
     <div id="modal1" class="modal">
         <div class="modal-header">
             <i class="material-icons">&#xE001;</i>
@@ -56,7 +57,18 @@
             <a href="#!" class="btn waves-effect waves-green confirm-btn-ok">OK</a>
         </div>
     </div>
-
+    <div id="prompt" class="modal">
+        <div class="modal-header">
+            <span class="prompt-msg">Default prompt</span>
+            <i class="modal-action modal-close material-icons right-align header-close-icon"></i></div>
+        <div class="divider"></div>
+        <div class="modal-content"><input type="text" /></div>
+        <div class="divider"></div>
+        <div class="modal-footer">
+            <a href="#!" class="btn waves-effect waves-green confirm-btn-cancel">Cancel</a>
+            <a href="#!" class="btn waves-effect waves-green confirm-btn-ok">OK</a>
+        </div>
+    </div>
     <script>
         $(document).ready(function () {
             // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
@@ -77,8 +89,7 @@
                 } // Callback for Modal close
             });
         });
-       
-    </script>
+    </script>-->
 </body>
 
 </html>
