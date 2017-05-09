@@ -1,36 +1,54 @@
-.modal-header {
+#divMatDialog .modal-header {
     padding: 4px 0px;
     height: 37px;
 }
 
-.modal-header .header-close-icon {
+#divMatDialog .modal-header .header-close-icon {
     float: right;
     padding-right: 5px;
 }
 
-.modal-header .header-text {
+#divMatDialog .modal-header .header-text {
     vertical-align: super;
 }
 
-.modal .modal-content {
+#divMatDialog .modal .modal-content {
     padding: 20px 10px;
 }
 
-.btn-ok {
+#divMatDialog .modal .modal-content .margin-top-5px {
+    margin-top: 5px;
+}
+
+#divMatDialog .modal .btn-ok {
     margin-right: 8px !important;
 }
 
-.prompt-msg {
+#divMatDialog .modal .prompt-msg {
     padding-left: 15px;
     font-size: 17px;
 }
 
-.modal input[type='text'] {
+#divMatDialog .modal input:not([type]),
+input[type='text'],
+input[type=password],
+input[type=email],
+input[type=url],
+input[type=time],
+input[type=date],
+input[type=datetime],
+input[type=datetime-local],
+input[type=tel],
+input[type=number],
+input[type=search],
+textarea,
+textarea.materialize-textarea,
+select {
     border: 1px solid #26a69a;
     margin: 0px;
 }
 
-input:not([type]):focus:not([readonly]),
+#divMatDialog .modal input:not([type]):focus:not([readonly]),
 input[type=text]:focus:not([readonly]),
 input[type=password]:focus:not([readonly]),
 input[type=email]:focus:not([readonly]),

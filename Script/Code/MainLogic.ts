@@ -9,6 +9,7 @@ interface IDialog {
 
 class MatDialog extends Helper {
     callBack: Function;
+    Option: IPrompt;
 
     registerModal = function (config: IDialog) {
         var DefaultConfig = <IDialog>{
@@ -67,8 +68,14 @@ class MatDialog extends Helper {
                 else if (DialogType == 'prompt') {
                     var Value = $(this).data('val');
                     if (Value != null ? JSON.parse(Value) : false) {
-                        var InputValue = $('#divMatDialog .modal input[type="text"]').val();
-                        That.callBack(InputValue.length > 0 ? InputValue : null);
+                        var InputValue;
+                        if (That.Option.Input) {
+                            InputValue = That.getPromptInputValue(That.Option.Input.Type);
+                        }
+                        else {
+                            InputValue = $('#divMatDialog .modal input[type="text"]').val();
+                        }
+                        That.callBack(InputValue && InputValue.length > 0 ? InputValue : null);
                     }
                     else {
                         That.callBack(null);
@@ -91,6 +98,25 @@ class MatDialog extends Helper {
                 }
             }
         })
+    }
+
+    private getPromptInputValue(type: string) {
+        switch (type) {
+            case 'text':
+            case 'date':
+            case 'number':
+            case 'email':
+            case 'password': return $('#divMatDialog .modal input[type=' + type + ']').val();
+            case 'select': return $('#divMatDialog .modal #selectMatDialog').val();
+            case 'radio': return $('#divMatDialog .modal input[name="radioMatDialog"]:checked').val()
+            case 'check':
+            case 'checkbox': var Values = [];
+                $('#divMatDialog .modal input[name="checkMatDialog"]:checked').each(function () {
+                    Values.push($(this).val());
+                });
+                return Values;
+            default: return $('#divMatDialog .modal input[type="text"]').val();
+        }
     }
 
     alert(Message: any, callBack: Function) {
@@ -124,6 +150,7 @@ class MatDialog extends Helper {
         else {
             Prompt.createPrompt(Message);
         }
+        this.Option = Message;
         $('#divMatDialog .modal').modal('open');
         $('#divMatDialog .modal input[type="text"]').focus();
     }

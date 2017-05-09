@@ -59,6 +59,52 @@ var MatDialogs;
 (function (MatDialogs) {
     var Prompt = (function () {
         function Prompt() {
+            this.getInnerContent = function (input) {
+                var InnerContent;
+                switch (input.Type) {
+                    case 'text':
+                    case 'date':
+                    case 'number':
+                    case 'email':
+                    case 'password': return '<input type="' + input.Type + '"/>';
+                    case 'select': if (input.Values && input.Values.length > 0) {
+                        var Content = '<select id="selectMatDialog" class="browser-default">';
+                        input.Values.forEach(function (value) {
+                            Content += '<option value=' + value.Value + '>' + value.Text + '</option>';
+                        });
+                        Content += '</select>';
+                        return Content;
+                    }
+                    else {
+                        console.error('no values provided');
+                        return '';
+                    }
+                    case 'radio': if (input.Values && input.Values.length > 0) {
+                        var Content = "";
+                        input.Values.forEach(function (value, index) {
+                            Content += '<div class="margin-top-5px"><input type="radio" id=' + index + ' name="radioMatDialog" value="' + value.Value + '"/><label for=' + index + '>' + value.Text + '</label></div>';
+                        });
+                        return Content;
+                    }
+                    else {
+                        console.error('no values provided');
+                        return '';
+                    }
+                    case 'check':
+                    case 'checkbox': if (input.Values && input.Values.length > 0) {
+                        var Content = "";
+                        input.Values.forEach(function (value, index) {
+                            Content += '<div class="margin-top-5px"><input type="checkbox" id=' + index + ' name="checkMatDialog" value=' + value.Value + '><label for=' + index + '>' + value.Text + '</label></div>';
+                        });
+                        return Content;
+                    }
+                    else {
+                        console.error('no values provided');
+                        return '';
+                    }
+                    default: return '<input type="text" />';
+                }
+            };
         }
         Prompt.prototype.createPrompt = function (Msg) {
             var ElementInnerHTML = '<div class="modal-header">' +
@@ -66,23 +112,29 @@ var MatDialogs;
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
                 '<div class="divider"></div><div class="modal-content"><input type="text" /></div>' + '<div class="divider"></div>' +
                 '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel">Cancel</a>' +
-                '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">OK</a></div>';
+                '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">Ok</a></div>';
             $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
         };
         Prompt.prototype.createCustomPrompt = function (option) {
+            if (option.ExecuteBefore) {
+                option.ExecuteBefore();
+            }
             var OkLabel = (option.Ok && option.Ok.Content) ? option.Ok.Content : 'Ok', CancelLabel = (option.Cancel && option.Cancel.Content) ? option.Cancel.Content : 'Cancel';
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<span class="prompt-msg">' + option.Text + '</span>' +
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
-                '<div class="divider"></div><div class="modal-content"><input type="text" /></div>' + '<div class="divider"></div>' +
-                '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel">Cancel</a>' +
-                '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">OK</a></div>';
+                '<div class="divider"></div><div class="modal-content">' + this.getInnerContent(option.Input) + '</div><div class="divider"></div>' +
+                '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel">' + CancelLabel + '</a>' +
+                '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a></div>';
             $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
             if (option.Ok && option.Ok.ClassName) {
                 $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.ClassName);
             }
             if (option.Cancel && option.Cancel.ClassName) {
                 $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.ClassName);
+            }
+            if (option.ExecuteAfter) {
+                option.ExecuteAfter();
             }
         };
         return Prompt;
@@ -145,8 +197,14 @@ var MatDialog = (function (_super) {
                 else if (DialogType == 'prompt') {
                     var Value = $(this).data('val');
                     if (Value != null ? JSON.parse(Value) : false) {
-                        var InputValue = $('#divMatDialog .modal input[type="text"]').val();
-                        That.callBack(InputValue.length > 0 ? InputValue : null);
+                        var InputValue;
+                        if (That.Option.Input) {
+                            InputValue = That.getPromptInputValue(That.Option.Input.Type);
+                        }
+                        else {
+                            InputValue = $('#divMatDialog .modal input[type="text"]').val();
+                        }
+                        That.callBack(InputValue && InputValue.length > 0 ? InputValue : null);
                     }
                     else {
                         That.callBack(null);
@@ -170,6 +228,25 @@ var MatDialog = (function (_super) {
         });
         return _this;
     }
+    MatDialog.prototype.getPromptInputValue = function (type) {
+        switch (type) {
+            case 'text':
+            case 'date':
+            case 'number':
+            case 'email':
+            case 'password': return $('#divMatDialog .modal input[type=' + type + ']').val();
+            case 'select': return $('#divMatDialog .modal #selectMatDialog').val();
+            case 'radio': return $('#divMatDialog .modal input[name="radioMatDialog"]:checked').val();
+            case 'check':
+            case 'checkbox':
+                var Values = [];
+                $('#divMatDialog .modal input[name="checkMatDialog"]:checked').each(function () {
+                    Values.push($(this).val());
+                });
+                return Values;
+            default: return $('#divMatDialog .modal input[type="text"]').val();
+        }
+    };
     MatDialog.prototype.alert = function (Message, callBack) {
         this.callBack = callBack;
         if (typeof (Message) === 'object') {
@@ -199,6 +276,7 @@ var MatDialog = (function (_super) {
         else {
             Prompt.createPrompt(Message);
         }
+        this.Option = Message;
         $('#divMatDialog .modal').modal('open');
         $('#divMatDialog .modal input[type="text"]').focus();
     };
