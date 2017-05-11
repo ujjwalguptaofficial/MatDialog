@@ -65,7 +65,7 @@ class MatDialog extends Helper {
                 if (DialogType == 'alert') {
                     That.callBack();
                 }
-                else if (DialogType == 'confirm') {
+                else if (DialogType == 'confirm' || DialogType == 'dialog') {
                     var Value = $(this).data('val');
                     That.callBack(Value != null ? JSON.parse(Value) : false);
                 }
@@ -97,7 +97,7 @@ class MatDialog extends Helper {
                 else if (DialogType == 'confirm') {
                     That.callBack(false);
                 }
-                else if (DialogType == 'prompt') {
+                else if (DialogType == 'prompt' || DialogType == 'dialog') {
                     That.callBack(null);
                 }
             }
@@ -159,9 +159,9 @@ class MatDialog extends Helper {
         $('#divMatDialog .modal .modal-content input').focus();
     }
 
-    dialog(option: IDialog) {
+    dialog(option: IDialog, callBack) {
         if (option) {
-            this.callBack = option.callBack;
+            this.callBack = callBack;
             new MatDialogs.Dialog().createDialog(option);
         }
         else {

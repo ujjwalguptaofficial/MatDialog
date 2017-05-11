@@ -6,6 +6,7 @@
 #divMatDialog .modal-header .header-close-icon {
     float: right;
     padding-right: 5px;
+    cursor: pointer;
 }
 
 #divMatDialog .modal-header .header-text {

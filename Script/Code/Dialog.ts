@@ -9,7 +9,6 @@ interface IDialog {
     },
     ButtonType: string
     Buttons: Array<Button>,
-    callBack: Function,
     ExecuteAfter: Function,
     ExecuteBefore: Function
 }
@@ -56,7 +55,7 @@ module MatDialogs {
             if (BottomHtml.length > 0) {
                 ElementInnerHTML += '<div class="divider"></div><div class="modal-footer">' + BottomHtml + '</div>';
             }
-            $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
+            $('#divMatDialog .modal').data('type', 'dialog').html(ElementInnerHTML);
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();
             }

@@ -205,7 +205,7 @@ var MatDialog = (function (_super) {
                 if (DialogType == 'alert') {
                     That.callBack();
                 }
-                else if (DialogType == 'confirm') {
+                else if (DialogType == 'confirm' || DialogType == 'dialog') {
                     var Value = $(this).data('val');
                     That.callBack(Value != null ? JSON.parse(Value) : false);
                 }
@@ -236,7 +236,7 @@ var MatDialog = (function (_super) {
                 else if (DialogType == 'confirm') {
                     That.callBack(false);
                 }
-                else if (DialogType == 'prompt') {
+                else if (DialogType == 'prompt' || DialogType == 'dialog') {
                     That.callBack(null);
                 }
             }
@@ -295,9 +295,9 @@ var MatDialog = (function (_super) {
         $('#divMatDialog .modal').modal('open');
         $('#divMatDialog .modal .modal-content input').focus();
     };
-    MatDialog.prototype.dialog = function (option) {
+    MatDialog.prototype.dialog = function (option, callBack) {
         if (option) {
-            this.callBack = option.callBack;
+            this.callBack = callBack;
             new MatDialogs.Dialog().createDialog(option);
         }
         else {
@@ -355,7 +355,7 @@ var MatDialogs;
                 if (BottomHtml.length > 0) {
                     ElementInnerHTML += '<div class="divider"></div><div class="modal-footer">' + BottomHtml + '</div>';
                 }
-                $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
+                $('#divMatDialog .modal').data('type', 'dialog').html(ElementInnerHTML);
                 if (option.ExecuteAfter) {
                     option.ExecuteAfter();
                 }
