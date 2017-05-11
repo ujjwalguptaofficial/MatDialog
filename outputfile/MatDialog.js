@@ -12,7 +12,10 @@ var __extends = (this && this.__extends) || (function () {
 var Helper = (function () {
     function Helper() {
         this.createCustomConfirm = function (option) {
-            var OkLabel = (option.Ok && option.Ok.Content) ? option.Ok.Content : 'Ok', CancelLabel = (option.Cancel && option.Cancel.Content) ? option.Cancel.Content : 'Cancel';
+            if (option.ExecuteBefore) {
+                option.ExecuteBefore();
+            }
+            var OkLabel = (option.Ok && option.Ok.Text) ? option.Ok.Text : 'Ok', CancelLabel = (option.Cancel && option.Cancel.Text) ? option.Cancel.Text : 'Cancel';
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
                 '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
@@ -25,6 +28,9 @@ var Helper = (function () {
             if (option.Cancel && option.Cancel.ClassName) {
                 $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.ClassName);
             }
+            if (option.ExecuteAfter) {
+                option.ExecuteAfter();
+            }
         };
     }
     Helper.prototype.createAlert = function (Msg) {
@@ -35,7 +41,10 @@ var Helper = (function () {
         $('#divMatDialog .modal').data('type', 'alert').html(ElementInnerHTML);
     };
     Helper.prototype.createCustomAlert = function (option) {
-        var ButtonContent = (option.Button && option.Button.Content) ? option.Button.Content : 'Ok';
+        if (option.ExecuteBefore) {
+            option.ExecuteBefore();
+        }
+        var ButtonContent = (option.Button && option.Button.Text) ? option.Button.Text : 'Ok';
         var ElementInnerHTML = '<div class="modal-header">' +
             '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
             '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
@@ -44,6 +53,9 @@ var Helper = (function () {
             $('#divMatDialog .modal .btn').addClass(option.Button.ClassName);
         }
         $('#divMatDialog .modal').data('type', 'alert').html(ElementInnerHTML);
+        if (option.ExecuteAfter) {
+            option.ExecuteAfter();
+        }
     };
     Helper.prototype.createConfirm = function (Msg) {
         var ElementInnerHTML = '<div class="modal-header">' +
@@ -119,7 +131,7 @@ var MatDialogs;
             if (option.ExecuteBefore) {
                 option.ExecuteBefore();
             }
-            var OkLabel = (option.Ok && option.Ok.Content) ? option.Ok.Content : 'Ok', CancelLabel = (option.Cancel && option.Cancel.Content) ? option.Cancel.Content : 'Cancel';
+            var OkLabel = (option.Ok && option.Ok.Text) ? option.Ok.Text : 'Ok', CancelLabel = (option.Cancel && option.Cancel.Text) ? option.Cancel.Text : 'Cancel';
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<span class="prompt-msg">' + option.Text + '</span>' +
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
@@ -175,6 +187,9 @@ var MatDialog = (function (_super) {
                     endingTop: DefaultConfig.EndingTop,
                 });
             }
+        };
+        _this.setModalConfig = function (config) {
+            this.registerModal(config);
         };
         var That = _this;
         //create a matdialog container
@@ -278,7 +293,17 @@ var MatDialog = (function (_super) {
         }
         this.Option = Message;
         $('#divMatDialog .modal').modal('open');
-        $('#divMatDialog .modal input[type="text"]').focus();
+        $('#divMatDialog .modal .modal-content input').focus();
+    };
+    MatDialog.prototype.dialog = function (option) {
+        if (option) {
+            this.callBack = option.callBack;
+            new MatDialogs.Dialog().createDialog(option);
+        }
+        else {
+            console.error('no Dialog option provided');
+        }
+        $('#divMatDialog .modal').modal('open');
     };
     return MatDialog;
 }(Helper));
@@ -286,4 +311,58 @@ var MatDialog = (function (_super) {
 /// <reference path="Code/Helper.ts" />
 /// <reference path="Code/Prompt.ts" />
 /// <reference path="Code/MainLogic.ts" />
+var MatDialogs;
+(function (MatDialogs) {
+    var Dialog = (function () {
+        function Dialog() {
+            this.createDialog = function (option) {
+                if (option.ExecuteBefore) {
+                    option.ExecuteBefore();
+                }
+                var ElementInnerHTML = '';
+                //Title
+                if (option.Title) {
+                    ElementInnerHTML += '<div class="modal-header">';
+                    if (option.Title.Text) {
+                        ElementInnerHTML += '<span class="prompt-msg">' + option.Title.Text + '</span>';
+                    }
+                    if (option.Title.ShowClose == undefined || JSON.parse(option.Title.ShowClose)) {
+                        ElementInnerHTML += '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i>';
+                    }
+                    ElementInnerHTML += '</div><div class="divider"></div>';
+                }
+                //Content
+                if (option.Content) {
+                    ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Text + '</div>';
+                }
+                //Button
+                var BottomHtml = "";
+                if (option.ButtonType) {
+                    var CancelLabel = 'Cancel', OkLabel = 'Ok';
+                    if (option.ButtonType.toLowerCase() == 'ok') {
+                        BottomHtml = '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
+                    }
+                    else {
+                        BottomHtml = '<a href="#!" data- val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel" > ' + CancelLabel + ' </a>' +
+                            '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
+                    }
+                }
+                else if (option.Buttons) {
+                    option.Buttons.forEach(function (item) {
+                        BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.ClassName ? item.ClassName : "") + '">' + item.Text + '</a>';
+                    });
+                }
+                if (BottomHtml.length > 0) {
+                    ElementInnerHTML += '<div class="divider"></div><div class="modal-footer">' + BottomHtml + '</div>';
+                }
+                $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
+                if (option.ExecuteAfter) {
+                    option.ExecuteAfter();
+                }
+            };
+        }
+        return Dialog;
+    }());
+    MatDialogs.Dialog = Dialog;
+})(MatDialogs || (MatDialogs = {}));
 //# sourceMappingURL=MatDialog.js.map

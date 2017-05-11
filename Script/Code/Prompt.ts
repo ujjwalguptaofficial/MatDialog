@@ -31,8 +31,8 @@ module MatDialogs {
             if (option.ExecuteBefore) {
                 option.ExecuteBefore();
             }
-            var OkLabel = (option.Ok && option.Ok.Content) ? option.Ok.Content : 'Ok',
-                CancelLabel = (option.Cancel && option.Cancel.Content) ? option.Cancel.Content : 'Cancel'
+            var OkLabel = (option.Ok && option.Ok.Text) ? option.Ok.Text : 'Ok',
+                CancelLabel = (option.Cancel && option.Cancel.Text) ? option.Cancel.Text : 'Cancel'
 
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<span class="prompt-msg">' + option.Text + '</span>' +

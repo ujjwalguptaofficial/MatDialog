@@ -1,15 +1,20 @@
 interface IConfirm {
     Text: string,
     Ok: Button,
-    Cancel: Button
+    Cancel: Button,
+    ExecuteAfter: Function,
+    ExecuteBefore: Function
 };
 interface IAlert {
     Text: string,
     Button: Button,
+    ExecuteAfter: Function,
+    ExecuteBefore: Function
 }
 interface Button {
-    Content: string,
-    ClassName: string
+    Text: string,
+    ClassName: string,
+    Value: string
 }
 
 class Helper {
@@ -22,7 +27,10 @@ class Helper {
     }
 
     createCustomAlert(option: IAlert) {
-        var ButtonContent = (option.Button && option.Button.Content) ? option.Button.Content : 'Ok';
+        if (option.ExecuteBefore) {
+            option.ExecuteBefore();
+        }
+        var ButtonContent = (option.Button && option.Button.Text) ? option.Button.Text : 'Ok';
         var ElementInnerHTML = '<div class="modal-header">' +
             '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
             '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
@@ -31,6 +39,9 @@ class Helper {
             $('#divMatDialog .modal .btn').addClass(option.Button.ClassName);
         }
         $('#divMatDialog .modal').data('type', 'alert').html(ElementInnerHTML);
+        if (option.ExecuteAfter) {
+            option.ExecuteAfter();
+        }
     }
 
     createConfirm(Msg: string) {
@@ -44,8 +55,11 @@ class Helper {
     }
 
     createCustomConfirm = function (option: IConfirm) {
-        var OkLabel = (option.Ok && option.Ok.Content) ? option.Ok.Content : 'Ok',
-            CancelLabel = (option.Cancel && option.Cancel.Content) ? option.Cancel.Content : 'Cancel'
+        if (option.ExecuteBefore) {
+            option.ExecuteBefore();
+        }
+        var OkLabel = (option.Ok && option.Ok.Text) ? option.Ok.Text : 'Ok',
+            CancelLabel = (option.Cancel && option.Cancel.Text) ? option.Cancel.Text : 'Cancel'
         var ElementInnerHTML = '<div class="modal-header">' +
             '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
             '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
@@ -57,6 +71,9 @@ class Helper {
         }
         if (option.Cancel && option.Cancel.ClassName) {
             $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.ClassName);
+        }
+        if (option.ExecuteAfter) {
+            option.ExecuteAfter();
         }
     }
 

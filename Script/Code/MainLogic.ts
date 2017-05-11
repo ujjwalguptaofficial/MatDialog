@@ -1,4 +1,4 @@
-interface IDialog {
+interface IDialogOption {
     Dismissible: Boolean, // Modal can be dismissed by clicking outside of the modal
     Opacity: number, // Opacity of modal background
     InDuration: number, // Transition in duration
@@ -11,8 +11,8 @@ class MatDialog extends Helper {
     callBack: Function;
     Option: IPrompt;
 
-    registerModal = function (config: IDialog) {
-        var DefaultConfig = <IDialog>{
+    registerModal = function (config: IDialogOption) {
+        var DefaultConfig = <IDialogOption>{
             Dismissible: true,
             EndingTop: '2%',
             InDuration: 300,
@@ -43,7 +43,11 @@ class MatDialog extends Helper {
         }
     }
 
-    constructor(config: IDialog) {
+    setModalConfig = function (config: IDialogOption) {
+        this.registerModal(config);
+    }
+
+    constructor(config: IDialogOption) {
         super();
         var That = this;
         //create a matdialog container
@@ -152,6 +156,17 @@ class MatDialog extends Helper {
         }
         this.Option = Message;
         $('#divMatDialog .modal').modal('open');
-        $('#divMatDialog .modal input[type="text"]').focus();
+        $('#divMatDialog .modal .modal-content input').focus();
+    }
+
+    dialog(option: IDialog) {
+        if (option) {
+            this.callBack = option.callBack;
+            new MatDialogs.Dialog().createDialog(option);
+        }
+        else {
+            console.error('no Dialog option provided');
+        }
+        $('#divMatDialog .modal').modal('open');
     }
 }
