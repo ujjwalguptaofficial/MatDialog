@@ -51,10 +51,12 @@ class MatDialog extends Helper {
         super();
         var That = this;
         //create a matdialog container
-        var container = document.createElement('div');
-        container.id = 'divMatDialog';
-        container.innerHTML = '<div class="modal"></div>'
-        document.body.appendChild(container);
+        if (document.getElementById('divMatDialog') == null) {
+            var container = document.createElement('div');
+            container.id = 'divMatDialog';
+            container.innerHTML = '<div class="modal"></div>'
+            document.body.appendChild(container);
+        }
 
         this.registerModal(config);
         $('#divMatDialog .modal').on('click', '.modal-button', function () {

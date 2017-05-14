@@ -1,0 +1,46 @@
+nav {
+    background-color: #348d89;
+}
+
+nav .brand-logo {
+    margin-top: 110px;
+    text-align: center;
+    width: 100%;
+}
+
+.brand-logo .logo {
+    font-size: 45px;
+    font-family: monospace;
+}
+
+.nav-content {
+    padding-top: 180px;
+}
+
+.btn {
+    background-color: #0c79ad;
+}
+
+.nav .brand-logo i,
+nav .brand-logo [class^="mdi-"],
+nav .brand-logo [class*="mdi-"],
+nav .brand-logo i.material-icons {
+    margin-right: 0px;
+}
+
+.seperator {
+    padding: 0px 2px;
+}
+
+.Content {
+    font-size: 20px;
+    padding: 10px;
+}
+
+pre {
+    /*background-color: #99d8d2;*/
+    padding: 10px 0px;
+    font-size: 17px;
+    border: 1px solid black;
+    border-radius: 4px;
+}
