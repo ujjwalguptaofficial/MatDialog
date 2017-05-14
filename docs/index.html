@@ -44,24 +44,41 @@
             </ul>
         </div>
     </nav>
-    <div id="divOverview" class="col s12 Content">
-        MatDialog.js is a JavaScript library for MatereializeCss which provides you functionalities to create dialog boxes without
-        having to worry about creating, managing or removing any of the required DOM elements or JS event handlers.
-        <br><br> Take a look at code for showing alert:
-        <table>
-            <tr>
-                <td>
-                    <pre>
-                        new MatDialog().alert('Hey I am Alert');</pre>
-                </td>
-                <td class="center-align">
-                    <button class="btn" onclick="showAlert();">Run Example</button>
-                </td>
-        </table>
-        <div id="divAlert" class="col s12">Test 1</div>
-        <div id="divConfirm" class="col s12">Test 2</div>
-        <div id="divPrompt" class="col s12">Test 3</div>
-        <div id="divDialog" class="col s12">Test 4</div>
+    <div class="row">
+        <div id="divOverview" class="col s12 m10 l8 Content">
+            MatDialog.js is a JavaScript library for MatereializeCss which provides you functionalities to create dialog boxes without
+            having to worry about creating, managing or removing any of the required DOM elements or JS event handlers.
+            <br><br> Take a look at code for showing alert:
+            <table>
+                <tr>
+                    <td>
+                        <span class="pre">
+                         new MatDialog().alert( 'Hey I am Alert'); </span>
+                    </td>
+                    <td class="center-align">
+                        <button class="btn" onclick="showAlert();">Run Example</button>
+                    </td>
+            </table>
+            It exposes four api - <br> 1. Alert
+            <table>
+                <tr>
+                    <td>
+                        <div class="pre">
+                            <span>
+                        <line>new MatDialog().alert( 'Hey I am Alert',function(){</line>
+                        <line> });</line>
+                        </span>
+                        </div>
+                    </td>
+                    <td class="center-align">
+                        <button class="btn" onclick="runAlert();">Run Example</button>
+                    </td>
+            </table>
+            <div id="divAlert" class="col s12">Test 1</div>
+            <div id="divConfirm" class="col s12">Test 2</div>
+            <div id="divPrompt" class="col s12">Test 3</div>
+            <div id="divDialog" class="col s12">Test 4</div>
+        </div>
         <script>
             function onPageLoaded() {
 
@@ -69,6 +86,12 @@
 
             function showAlert() {
                 new MatDialog().alert('Hey I am Alert');
+            }
+
+            function runAlert() {
+                new MatDialog().alert('Hey I am Alert', function () {
+                    Materialize.toast('Alert callback', 4000)
+                });
             }
         </script>
 

@@ -34,13 +34,30 @@ nav .brand-logo i.material-icons {
 
 .Content {
     font-size: 20px;
-    padding: 10px;
+    padding: 25px;
+    margin: 0 auto;
+    left: 0px;
+    right: 0px;
 }
 
-pre {
+.pre {
     /*background-color: #99d8d2;*/
     padding: 10px 0px;
     font-size: 17px;
     border: 1px solid black;
-    border-radius: 4px;
+    border-radius: 3px;
+    text-align: center;
+    display: block;
+}
+
+.pre span {
+    margin: 0 auto;
+    width: 50%;
+    display: inline-block;
+}
+
+line {
+    margin-bottom: 4px;
+    display: block;
+    text-align: left;
 }

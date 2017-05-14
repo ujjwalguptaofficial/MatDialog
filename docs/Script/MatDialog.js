@@ -198,51 +198,51 @@ var MatDialog = (function (_super) {
             container.id = 'divMatDialog';
             container.innerHTML = '<div class="modal"></div>';
             document.body.appendChild(container);
-        }
-        _this.registerModal(config);
-        $('#divMatDialog .modal').on('click', '.modal-button', function () {
-            var Modal = $('#divMatDialog .modal'), DialogType = Modal.data('type');
-            Modal.modal('close');
-            if (That.callBack != null) {
-                if (DialogType == 'alert') {
-                    That.callBack();
-                }
-                else if (DialogType == 'confirm' || DialogType == 'dialog') {
-                    var Value = $(this).data('val');
-                    That.callBack(Value != null ? JSON.parse(Value) : false);
-                }
-                else if (DialogType == 'prompt') {
-                    var Value = $(this).data('val');
-                    if (Value != null ? JSON.parse(Value) : false) {
-                        var InputValue;
-                        if (That.Option.Input) {
-                            InputValue = That.getPromptInputValue(That.Option.Input.Type);
+            _this.registerModal(config);
+            $('#divMatDialog .modal').on('click', '.modal-button', function () {
+                var Modal = $('#divMatDialog .modal'), DialogType = Modal.data('type');
+                Modal.modal('close');
+                if (That.callBack != null) {
+                    if (DialogType == 'alert') {
+                        That.callBack();
+                    }
+                    else if (DialogType == 'confirm' || DialogType == 'dialog') {
+                        var Value = $(this).data('val');
+                        That.callBack(Value != null ? JSON.parse(Value) : false);
+                    }
+                    else if (DialogType == 'prompt') {
+                        var Value = $(this).data('val');
+                        if (Value != null ? JSON.parse(Value) : false) {
+                            var InputValue;
+                            if (That.Option.Input) {
+                                InputValue = That.getPromptInputValue(That.Option.Input.Type);
+                            }
+                            else {
+                                InputValue = $('#divMatDialog .modal input[type="text"]').val();
+                            }
+                            That.callBack(InputValue && InputValue.length > 0 ? InputValue : null);
                         }
                         else {
-                            InputValue = $('#divMatDialog .modal input[type="text"]').val();
+                            That.callBack(null);
                         }
-                        That.callBack(InputValue && InputValue.length > 0 ? InputValue : null);
                     }
-                    else {
+                }
+            });
+            $('body').on('click', '.modal-overlay', function () {
+                if (That.callBack != null) {
+                    var DialogType = $('#divMatDialog .modal').data('type');
+                    if (DialogType == 'alert') {
+                        That.callBack();
+                    }
+                    else if (DialogType == 'confirm') {
+                        That.callBack(false);
+                    }
+                    else if (DialogType == 'prompt' || DialogType == 'dialog') {
                         That.callBack(null);
                     }
                 }
-            }
-        });
-        $('body').on('click', '.modal-overlay', function () {
-            if (That.callBack != null) {
-                var DialogType = $('#divMatDialog .modal').data('type');
-                if (DialogType == 'alert') {
-                    That.callBack();
-                }
-                else if (DialogType == 'confirm') {
-                    That.callBack(false);
-                }
-                else if (DialogType == 'prompt' || DialogType == 'dialog') {
-                    That.callBack(null);
-                }
-            }
-        });
+            });
+        }
         return _this;
     }
     MatDialog.prototype.getPromptInputValue = function (type) {
