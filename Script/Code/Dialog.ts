@@ -14,6 +14,10 @@ interface IDialog {
 }
 module MatDialogs {
     export class Dialog {
+        constructor(option) {
+            this.createDialog(option);
+        }
+
         createDialog = function (option: IDialog) {
             if (option.ExecuteBefore) {
                 option.ExecuteBefore();

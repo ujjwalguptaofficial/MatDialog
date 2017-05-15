@@ -17,6 +17,14 @@ interface IInput {
 
 module MatDialogs {
     export class Prompt {
+        constructor(option) {
+            if (typeof (option) === 'object') {
+                this.createCustomPrompt(option);
+            }
+            else {
+                this.createPrompt(option);
+            }
+        }
         createPrompt(Msg: string) {
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<span class="prompt-msg">' + Msg + '</span>' +

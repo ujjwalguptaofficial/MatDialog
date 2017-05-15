@@ -33,26 +33,30 @@ nav .brand-logo i.material-icons {
 }
 
 .Content {
+    /*font-size: 20px;*/
+    margin-top: 25px;
+}
+
+h6 {
     font-size: 20px;
-    padding: 25px;
-    margin: 0 auto;
-    left: 0px;
-    right: 0px;
 }
 
 .pre {
     /*background-color: #99d8d2;*/
-    padding: 10px 0px;
-    font-size: 17px;
-    border: 1px solid black;
+    padding: 10px;
+    font-size: 13px;
+    background-color: #e8e8ef;
+    border: 1px solid #bebecb;
     border-radius: 3px;
     text-align: center;
-    display: block;
+}
+
+.tableCode tr td:first-child {
+    width: 70%;
 }
 
 .pre span {
     margin: 0 auto;
-    width: 50%;
     display: inline-block;
 }
 
