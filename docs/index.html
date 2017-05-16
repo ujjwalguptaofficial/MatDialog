@@ -28,8 +28,6 @@
                 <li><a href="About.html">About</a></li>
                 <li class="seperator">|</li>
                 <li><a href="badges.html">Donate</a></li>
-                <li>|</li>
-                <li><a href="sass.html">Buy the project</a></li>
             </ul>
             <ul class="side-nav" id="mobile-demo">
                 <li><a href="sass.html">Sass</a></li>
@@ -52,195 +50,320 @@
         </div>
     </nav>
     <div class="row">
-        <div id="divOverview" class="col s12 m10 l8 push-l2 push-m1 Content">
-            <h6>MatDialog.js is a JavaScript library for MatereializeCss which provides you functionalities to create dialog
-                boxes without having to worry about creating, managing or removing any of the required DOM elements or JS
-                event handlers.
-            </h6>
-            <br><br> Take a look at code for showing alert:
-            <table class="tableCode">
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>var MyDialog=new MatDialog();</line>
-                            <line>MyDialog.alert( 'Hey I am Alert'); </line>
-                        </div>
-                        <br>or if you are in hurry<br><br>
-                        <div class="pre">
-                            <line>new MatDialog().alert( 'Hey I am Alert'); </line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="showAlert();">Run Example</button>
-                    </td>
-            </table>
-            <br>
-            <div class="divider"></div>
-            <br>
-            <h5> It exposes four api -</h5>
-            <table class="tableCode">
-                <tr>
-                    <th>
-                        1. Alert
-                        <a href="#divAlert" class="right">see documentation</a>
-                    </th>
-                    <th>
+        <div class="col s12 m10 l8 push-l2 push-m1 Content">
+            <div id="divOverview">
+                <h6>MatDialog.js is a JavaScript library for MatereializeCss which provides you functionalities to create dialog
+                    boxes without having to worry about creating, managing or removing any of the required DOM elements or
+                    JS event handlers.
+                </h6>
+                <br><br> Take a look at code for showing alert:
+                <table class="tableCode">
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>var MyDialog=new MatDialog();</line>
+                                <line>MyDialog.alert( 'Hey I am Alert'); </line>
+                            </div>
+                            <br>or if you are in hurry<br><br>
+                            <div class="pre">
+                                <line>new MatDialog().alert( 'Hey I am Alert'); </line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlert();">Run Example</button>
+                        </td>
+                </table>
+                <br>
+                <div class="divider"></div>
+                <br>
+                <h5> It exposes four api -</h5>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            1. Alert
+                            <a href="#" onclick="clickOnTab('#divAlert')" class="right">see documentation</a>
+                        </th>
+                        <th>
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>var MyDialog=new MatDialog();</line>
-                            <line>MyDialog.alert( 'Hey I am Alert',function(){</line>
-                            <line> });</line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="runAlert();">Run Example</button>
-                    </td>
-                </tr>
-            </table>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>var MyDialog=new MatDialog();</line>
+                                <line>MyDialog.alert( 'Hey I am Alert',function(){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlertWithCallBack();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
 
-            <table class="tableCode">
-                <tr>
-                    <th>
-                        2. Confirm
-                        <a href="#divAlert" class="right">see documentation</a>
-                    </th>
-                    <th>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            2. Confirm
+                            <a href="#" onclick="clickOnTab('#divConfirm')" class="right">see documentation</a>
+                        </th>
+                        <th>
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>//Assumimg we have already created the object.</line>
-                            <line>MyDialog.confirm( 'This is a confirm dialog',function(result){</line>
-                            <line> });</line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="runConfirm();">Run Example</button>
-                    </td>
-                </tr>
-            </table>
-            <table class="tableCode">
-                <tr>
-                    <th>
-                        3. Prompt
-                        <a href="#divAlert" class="right">see documentation</a>
-                    </th>
-                    <th>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>//Assumimg we have already created the object.</line>
+                                <line>MyDialog.confirm( 'This is a confirm dialog',function(result){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runConfirm();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            3. Prompt
+                            <a href="#" onclick="clickOnTab('#divPrompt')" class="right">see documentation</a>
+                        </th>
+                        <th>
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>//Assumimg we have already created the object.</line>
-                            <line>MyDialog.prompt( 'This is a prompt dialog',function(result){</line>
-                            <line> });</line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="runPrompt();">Run Example</button>
-                    </td>
-                </tr>
-            </table>
-            <table class="tableCode">
-                <tr>
-                    <th>
-                        4. Create - By using this you can create your own customize dialog
-                        <a href="#divAlert" class="right">see documentation</a>
-                    </th>
-                    <th>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>//Assumimg we have already created the object.</line>
+                                <line>MyDialog.prompt( 'This is a prompt dialog',function(result){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runPrompt();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            4. Create - By using this you can create your own customize dialog
+                            <a href="#" onclick="clickOnTab('#divDialog')" class="right">see documentation</a>
+                        </th>
+                        <th>
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>//Assumimg we have already created the object.</line>
-                            <line>MyDialog.create({</line>
-                            <line style="padding-left:20px;">Content:{</line>
-                            <line style="padding-left:40px;"> Text:'I am customized dialog box'</line>
-                            <line style="padding-left:20px;">}</line>
-                            <line>});</line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="createCustomDialog();">Run Example</button>
-                    </td>
-                </tr>
-            </table>
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>//Assumimg we have already created the object.</line>
+                                <line>MyDialog.create({</line>
+                                <line style="padding-left:20px;">Content:{</line>
+                                <line style="padding-left:40px;"> Text:'I am customized dialog box'</line>
+                                <line style="padding-left:20px;">}</line>
+                                <line>});</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="createCustomDialog();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divAlert" class="col s12">
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            Default Alert
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>var MyDialog=new MatDialog();</line>
+                                <line>MyDialog.alert( 'Hey I am Alert',function(){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlert();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            Default Alert with callback
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>MyDialog.alert( 'Hey I am Alert with callback',function(){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlertWithCallBack();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            Alert with customized button
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>MyDialog.alert(</line>
+                                <line style="padding-left: 20px;">{</line>
+                                <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
+                                <line style="padding-left: 40px;">Button:{</line>
+                                <line style="padding-left: 50px;">Text:'Ok great !',</line>
+                                <line style="padding-left: 50px;">Class:'red'</line>
+                                <line style="padding-left: 40px;">}</line>
+                                <line style="padding-left: 20px;">},</line>
+                                <line style="padding-left: 20px;">function(){</line>
+                                <line style="padding-left: 20px;">}</line>
+                                <line>);</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlertWithCustomizedButton();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            More Option : <br> ExecuteAfter - This will be called after the modal creation.<br> ExecuteBefore
+                            - This will be called before modal creation.<br>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>MyDialog.alert(</line>
+                                <line style="padding-left: 20px;">{</line>
+                                <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
+                                <line style="padding-left: 40px;">Button:{</line>
+                                <line style="padding-left: 50px;">Text:'Ok great !',</line>
+                                <line style="padding-left: 50px;">Class:'red'</line>
+                                <line style="padding-left: 40px;">},</line>
+                                <line style="padding-left: 40px;">ExecuteBefore:function(){</line>
+                                <line style="padding-left: 40px;">}</line>
+                                <line style="padding-left: 20px;">},</line>
+                                <line style="padding-left: 20px;">function(){</line>
+                                <line style="padding-left: 20px;">}</line>
+                                <line>);</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlertWithExecuteOption();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divConfirm" class="col s12">Test 2</div>
+            <div id="divPrompt" class="col s12">Test 3</div>
+            <div id="divDialog" class="col s12">Test 4</div>
         </div>
-        <div id="divAlert" class="col s12">
-            <table class="tableCode">
-                <tr>
-                    <th>
-                        Default Alert
-                    </th>
-                    <th>
+    </div>
+    <script src="Script/common.js"></script>
+    <script>
+        var DialogBox;
 
-                    </th>
-                </tr>
-                <tr>
-                    <td>
-                        <div class="pre">
-                            <line>var MyDialog=new MatDialog();</line>
-                            <line>MyDialog.alert( 'Hey I am Alert',function(){</line>
-                            <line> });</line>
-                        </div>
-                    </td>
-                    <td class="center-align">
-                        <button class="btn" onclick="runAlert();">Run Example</button>
-                    </td>
-                </tr>
-            </table>
-        </div>
-        <div id="divConfirm" class="col s12">Test 2</div>
-        <div id="divPrompt" class="col s12">Test 3</div>
-        <div id="divDialog" class="col s12">Test 4</div>
-        <script src="Script/common.js"></script>
-        <script>
-            var DialogBox;
+        function onPageLoaded() {
+            DialogBox = new MatDialog();
+        }
 
-            function onPageLoaded() {
-                DialogBox = new MatDialog();
-            }
+        function runAlert() {
+            DialogBox.alert('Hey I am Alert');
+        }
 
-            function showAlert() {
-                DialogBox.alert('Hey I am Alert');
-            }
+        function runAlertWithCallBack() {
+            DialogBox.alert('Hey I am Alert', function () {
+                Materialize.toast('Alert callback', 3000)
+            });
+        }
 
-            function runAlert() {
-                DialogBox.alert('Hey I am Alert', function () {
-                    Materialize.toast('Alert callback', 3000)
-                });
-            }
+        function runConfirm() {
+            DialogBox.confirm('This is a confirm dialog', function (result) {
+                Materialize.toast('You Pressed: ' + result, 3000)
+            });
+        }
 
-            function runConfirm() {
-                DialogBox.confirm('This is a confirm dialog', function (result) {
-                    Materialize.toast('You Pressed: ' + result, 3000)
-                });
-            }
+        function runPrompt() {
+            DialogBox.prompt('This is a confirm dialog', function (result) {
+                Materialize.toast('The entered value is : ' + result, 3000)
+            });
+        }
 
-            function runPrompt() {
-                DialogBox.prompt('This is a confirm dialog', function (result) {
-                    Materialize.toast('The entered value is : ' + result, 3000)
-                });
-            }
+        function createCustomDialog() {
+            DialogBox.create({
+                Content: {
+                    Text: 'I am customized dialog box'
+                }
+            });
+        }
 
-            function createCustomDialog() {
-                DialogBox.create({
-                    Content: {
-                        Text: 'I am customized dialog box'
+        function runAlertWithCustomizedButton() {
+            DialogBox.alert({
+                    Text: 'Hey I am Alert with customized button',
+                    Button: {
+                        Text: 'Ok great !',
+                        Class: 'red'
                     }
-                });
-            }
-        </script>
+                },
+                function () {
+                    Materialize.toast('I am callback', 3000)
+                }
+            );
+        }
 
+        function runAlertWithExecuteOption() {
+            DialogBox.alert({
+                    Text: 'Hey I am Alert with callback',
+                    Button: {
+                        Text: 'Ok great !',
+                        Class: 'red'
+                    },
+                    ExecuteBefore: function () {
+                        Materialize.toast('Execute before called', 3000)
+                    }
+                },
+                function () {}
+            );
+        }
+
+        function clickOnTab(id) {
+            //$('li.tab a[href="#divAlert"]').click()
+            $('li.tab a[href="' + id + '"]').click()
+        }
+    </script>
+    <style>
+        .red {
+            background-color: red;
+        }
+    </style>
 </body>
 
 </html>

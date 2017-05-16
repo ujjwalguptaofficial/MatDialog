@@ -7,7 +7,7 @@ interface IConfirm {
 };
 interface Button {
     Text: string,
-    ClassName: string,
+    Class: string,
     Value: string
 }
 
@@ -43,11 +43,11 @@ module MatDialogs {
                 '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green confirm btn-cancel">' + CancelLabel + '</a>' +
                 '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green confirm btn-ok">' + OkLabel + '</a></div>';
             $('#divMatDialog .modal').data('type', 'confirm').html(ElementInnerHTML);
-            if (option.Ok && option.Ok.ClassName) {
-                $('#divMatDialog .modal .confirm .btn-ok').addClass(option.Ok.ClassName);
+            if (option.Ok && option.Ok.Class) {
+                $('#divMatDialog .modal .confirm .btn-ok').addClass(option.Ok.Class);
             }
-            if (option.Cancel && option.Cancel.ClassName) {
-                $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.ClassName);
+            if (option.Cancel && option.Cancel.Class) {
+                $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.Class);
             }
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();

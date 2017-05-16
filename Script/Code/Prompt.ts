@@ -50,11 +50,11 @@ module MatDialogs {
                 '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a></div>';
             $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
 
-            if (option.Ok && option.Ok.ClassName) {
-                $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.ClassName);
+            if (option.Ok && option.Ok.Class) {
+                $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.Class);
             }
-            if (option.Cancel && option.Cancel.ClassName) {
-                $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.ClassName);
+            if (option.Cancel && option.Cancel.Class) {
+                $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.Class);
             }
 
             if (option.ExecuteAfter) {

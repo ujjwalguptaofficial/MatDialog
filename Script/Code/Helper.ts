@@ -1,9 +1,10 @@
 class Helper {
     CallBack: Function;
+    Option: IPrompt;
 
     protected openModal = function (callBack: Function, isInput?: boolean) {
         this.CallBack = callBack;
-        var That = this;
+        var That: Helper = this;
         $('#divMatDialog .modal').modal('open');
         //registering button click
         $('#divMatDialog .modal').on('click', '.modal-button', function () {
@@ -39,7 +40,7 @@ class Helper {
 
         //registering modal overlay
         $('body').on('click', '.modal-overlay', function () {
-            if (That.callBack != null) {
+            if (That.CallBack != null) {
                 var DialogType = $('#divMatDialog .modal').data('type');
                 if (DialogType == 'alert') {
                     That.CallBack();

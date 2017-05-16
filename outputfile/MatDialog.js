@@ -46,7 +46,7 @@ var Helper = (function () {
             });
             //registering modal overlay
             $('body').on('click', '.modal-overlay', function () {
-                if (That.callBack != null) {
+                if (That.CallBack != null) {
                     var DialogType = $('#divMatDialog .modal').data('type');
                     if (DialogType == 'alert') {
                         That.CallBack();
@@ -206,11 +206,11 @@ var MatDialogs;
                 '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel">' + CancelLabel + '</a>' +
                 '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a></div>';
             $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
-            if (option.Ok && option.Ok.ClassName) {
-                $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.ClassName);
+            if (option.Ok && option.Ok.Class) {
+                $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.Class);
             }
-            if (option.Cancel && option.Cancel.ClassName) {
-                $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.ClassName);
+            if (option.Cancel && option.Cancel.Class) {
+                $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.Class);
             }
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();
@@ -247,10 +247,10 @@ var MatDialogs;
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
                 '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
                 '<div class="modal-footer"><a href="#!" class="modal-button btn waves-effect waves-green">' + ButtonContent + '</a></div>';
-            if (option.Button && option.Button.ClassName) {
-                $('#divMatDialog .modal .btn').addClass(option.Button.ClassName);
-            }
             $('#divMatDialog .modal').data('type', 'alert').html(ElementInnerHTML);
+            if (option.Button && option.Button.Class) {
+                $('#divMatDialog .modal .btn').addClass(option.Button.Class);
+            }
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();
             }
@@ -322,11 +322,11 @@ var MatDialogs;
                     '<div class="modal-footer"><a href="#!" data-val="false" class="modal-button btn waves-effect waves-green confirm btn-cancel">' + CancelLabel + '</a>' +
                     '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green confirm btn-ok">' + OkLabel + '</a></div>';
                 $('#divMatDialog .modal').data('type', 'confirm').html(ElementInnerHTML);
-                if (option.Ok && option.Ok.ClassName) {
-                    $('#divMatDialog .modal .confirm .btn-ok').addClass(option.Ok.ClassName);
+                if (option.Ok && option.Ok.Class) {
+                    $('#divMatDialog .modal .confirm .btn-ok').addClass(option.Ok.Class);
                 }
-                if (option.Cancel && option.Cancel.ClassName) {
-                    $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.ClassName);
+                if (option.Cancel && option.Cancel.Class) {
+                    $('#divMatDialog .modal .confirm .btn-cancel').addClass(option.Cancel.Class);
                 }
                 if (option.ExecuteAfter) {
                     option.ExecuteAfter();
@@ -389,7 +389,7 @@ var MatDialogs;
                 }
                 else if (option.Buttons) {
                     option.Buttons.forEach(function (item) {
-                        BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.ClassName ? item.ClassName : "") + '">' + item.Text + '</a>';
+                        BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.Class ? item.Class : "") + '">' + item.Text + '</a>';
                     });
                 }
                 if (BottomHtml.length > 0) {

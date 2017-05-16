@@ -9,7 +9,7 @@ interface IDialogOption {
 }
 
 class MatDialog extends Helper {
-    Option: IPrompt;
+    
     setModalConfig = function (config: IDialogOption) {
         this.registerModal(config);
     }

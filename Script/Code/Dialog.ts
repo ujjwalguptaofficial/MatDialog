@@ -53,7 +53,7 @@ module MatDialogs {
             }
             else if (option.Buttons) {
                 option.Buttons.forEach(function (item) {
-                    BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.ClassName ? item.ClassName : "") + '">' + item.Text + '</a>';
+                    BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.Class ? item.Class : "") + '">' + item.Text + '</a>';
                 })
             }
             if (BottomHtml.length > 0) {

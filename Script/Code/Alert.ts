@@ -31,10 +31,10 @@ module MatDialogs {
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
                 '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +
                 '<div class="modal-footer"><a href="#!" class="modal-button btn waves-effect waves-green">' + ButtonContent + '</a></div>';
-            if (option.Button && option.Button.ClassName) {
-                $('#divMatDialog .modal .btn').addClass(option.Button.ClassName);
-            }
             $('#divMatDialog .modal').data('type', 'alert').html(ElementInnerHTML);
+            if (option.Button && option.Button.Class) {
+                $('#divMatDialog .modal .btn').addClass(option.Button.Class);
+            }
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();
             }
