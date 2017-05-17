@@ -26,7 +26,7 @@ module MatDialogs {
             if (option.ExecuteBefore) {
                 option.ExecuteBefore();
             }
-            var ButtonContent = (option.Button && option.Button.Text) ? option.Button.Text : 'Ok';
+            var ButtonContent = (option.Button && option.Button.Label) ? option.Button.Label : 'Ok';
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i></div>' +
                 '<div class="divider"></div><div class="modal-content">' + option.Text + '</div>' + '<div class="divider"></div>' +

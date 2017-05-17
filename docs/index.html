@@ -120,7 +120,7 @@
                             </div>
                         </td>
                         <td class="center-align">
-                            <button class="btn" onclick="runConfirm();">Run Example</button>
+                            <button class="btn" onclick="runConfirmWithCallback();">Run Example</button>
                         </td>
                     </tr>
                 </table>
@@ -234,7 +234,7 @@
                                 <line style="padding-left: 20px;">{</line>
                                 <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
                                 <line style="padding-left: 40px;">Button:{</line>
-                                <line style="padding-left: 50px;">Text:'Ok great !',</line>
+                                <line style="padding-left: 50px;">Label:'Ok great !',</line>
                                 <line style="padding-left: 50px;">Class:'red'</line>
                                 <line style="padding-left: 40px;">}</line>
                                 <line style="padding-left: 20px;">},</line>
@@ -245,6 +245,99 @@
                         </td>
                         <td class="center-align">
                             <button class="btn" onclick="runAlertWithCustomizedButton();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            More Option : <br> ExecuteAfter - This will be called after the modal creation.<br> ExecuteBefore
+                            - This will be called before modal creation.<br>
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>MyDialog.alert(</line>
+                                <line style="padding-left: 20px;">{</line>
+                                <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
+                                <line style="padding-left: 40px;">Button:{</line>
+                                <line style="padding-left: 50px;">Label:'Ok great !',</line>
+                                <line style="padding-left: 50px;">Class:'red'</line>
+                                <line style="padding-left: 40px;">},</line>
+                                <line style="padding-left: 40px;">ExecuteBefore:function(){</line>
+                                <line style="padding-left: 40px;">}</line>
+                                <line style="padding-left: 20px;">},</line>
+                                <line style="padding-left: 20px;">function(){</line>
+                                <line style="padding-left: 20px;">}</line>
+                                <line>);</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runAlertWithExecuteOption();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div id="divConfirm" class="col s12">
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            Default Prompt
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>var MyDialog=new MatDialog();</line>
+                                <line>MyDialog.confirm( 'This is a confirm dialog',function(){</line>
+                                <line> });</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runConfirmWithCallback();">Run Example</button>
+                        </td>
+                    </tr>
+                </table>
+                <table class="tableCode">
+                    <tr>
+                        <th>
+                            Confirm with customized button
+                        </th>
+                        <th>
+
+                        </th>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div class="pre">
+                                <line>MyDialog.confirm(</line>
+                                <line style="padding-left: 20px;">{</line>
+                                <line style="padding-left: 40px;">Text:'Hey I am Confirm Dialog',</line>
+                                <line style="padding-left: 40px;">Buttons:{</line>
+                                <line style="padding-left: 50px;">Ok:{</line>
+                                <line style="padding-left: 70px;"> Label:'Ok cool !',</line>
+                                <line style="padding-left: 70px;">Class:'green'</line>
+                                <line style="padding-left: 50px;">},</line>
+                                <line style="padding-left: 50px;">Cancel:{</line>
+                                <line style="padding-left: 70px;"> Label:'Not cool !',</line>
+                                <line style="padding-left: 70px;">Class:'red'</line>
+                                <line style="padding-left: 50px;">}</line>
+                                <line style="padding-left: 40px;">}</line>
+                                <line style="padding-left: 20px;">},</line>
+                                <line style="padding-left: 20px;">function(){</line>
+                                <line style="padding-left: 20px;">}</line>
+                                <line>);</line>
+                            </div>
+                        </td>
+                        <td class="center-align">
+                            <button class="btn" onclick="runConfirmWithCustomizedButton();">Run Example</button>
                         </td>
                     </tr>
                 </table>
@@ -282,7 +375,6 @@
                     </tr>
                 </table>
             </div>
-            <div id="divConfirm" class="col s12">Test 2</div>
             <div id="divPrompt" class="col s12">Test 3</div>
             <div id="divDialog" class="col s12">Test 4</div>
         </div>
@@ -306,6 +398,10 @@
         }
 
         function runConfirm() {
+            DialogBox.confirm('This is a confirm dialog');
+        }
+
+        function runConfirmWithCallback() {
             DialogBox.confirm('This is a confirm dialog', function (result) {
                 Materialize.toast('You Pressed: ' + result, 3000)
             });
@@ -329,7 +425,7 @@
             DialogBox.alert({
                     Text: 'Hey I am Alert with customized button',
                     Button: {
-                        Text: 'Ok great !',
+                        Label: 'Ok great !',
                         Class: 'red'
                     }
                 },
@@ -343,7 +439,7 @@
             DialogBox.alert({
                     Text: 'Hey I am Alert with callback',
                     Button: {
-                        Text: 'Ok great !',
+                        Label: 'Ok great !',
                         Class: 'red'
                     },
                     ExecuteBefore: function () {
@@ -358,10 +454,34 @@
             //$('li.tab a[href="#divAlert"]').click()
             $('li.tab a[href="' + id + '"]').click()
         }
+
+        function runConfirmWithCustomizedButton() {
+            DialogBox.confirm({
+                    Text: 'Hey I am Confirm Dialog',
+                    Buttons: {
+                        Ok: {
+                            Label: 'Ok cool !',
+                            Class: 'green'
+                        },
+                        Cancel: {
+                            Label: 'Not cool !',
+                            Class: 'red'
+                        }
+                    }
+                },
+                function (result) {
+                    Materialize.toast('You Pressed: ' + result, 3000)
+                }
+            );
+        }
     </script>
     <style>
         .red {
             background-color: red;
+        }
+
+        .green {
+            background-color: green;
         }
     </style>
 </body>

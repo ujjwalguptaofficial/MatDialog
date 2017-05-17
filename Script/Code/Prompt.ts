@@ -1,7 +1,9 @@
 interface IPrompt {
     Text: string,
-    Ok: Button,
-    Cancel: Button,
+    Buttons: {
+        Ok: Button,
+        Cancel: Button
+    }
     Input: IInput,
     ExecuteAfter: Function,
     ExecuteBefore: Function
@@ -39,8 +41,8 @@ module MatDialogs {
             if (option.ExecuteBefore) {
                 option.ExecuteBefore();
             }
-            var OkLabel = (option.Ok && option.Ok.Text) ? option.Ok.Text : 'Ok',
-                CancelLabel = (option.Cancel && option.Cancel.Text) ? option.Cancel.Text : 'Cancel'
+            var OkLabel = (option.Buttons && option.Buttons.Ok && option.Buttons.Ok.Label) ? option.Buttons.Ok.Label : 'Ok',
+                CancelLabel = (option.Buttons && option.Buttons.Cancel && option.Buttons.Cancel.Label) ? option.Buttons.Cancel.Label : 'Cancel'
 
             var ElementInnerHTML = '<div class="modal-header">' +
                 '<span class="prompt-msg">' + option.Text + '</span>' +
@@ -50,11 +52,11 @@ module MatDialogs {
                 '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a></div>';
             $('#divMatDialog .modal').data('type', 'prompt').html(ElementInnerHTML);
 
-            if (option.Ok && option.Ok.Class) {
-                $('#divMatDialog .modal .prompt .btn-ok').addClass(option.Ok.Class);
+            if (option.Buttons && option.Buttons.Ok && option.Buttons.Ok.Class) {
+                $('#divMatDialog .modal .prompt.btn-ok').addClass(option.Buttons.Ok.Class);
             }
-            if (option.Cancel && option.Cancel.Class) {
-                $('#divMatDialog .modal .prompt .btn-cancel').addClass(option.Cancel.Class);
+            if (option.Buttons && option.Buttons.Cancel && option.Buttons.Cancel.Class) {
+                $('#divMatDialog .modal .prompt.btn-cancel').addClass(option.Buttons.Cancel.Class);
             }
 
             if (option.ExecuteAfter) {
