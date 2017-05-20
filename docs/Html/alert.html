@@ -1,0 +1,142 @@
+<table class="tableCode">
+    <tr>
+        <th>
+            Default Alert
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>var MyDialog=new MatDialog();</line>
+                <line>MyDialog.alert( 'Hey I am Alert',function(){</line>
+                <line> });</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runAlert();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            Default Alert with callback
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.alert( 'Hey I am Alert with callback',function(){</line>
+                <line> });</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runAlertWithCallBack();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            Alert with customized button
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.alert(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
+                <line style="padding-left: 40px;">Button:{</line>
+                <line style="padding-left: 50px;">Label:'Ok great !',</line>
+                <line style="padding-left: 50px;">Class:'red'</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(){</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runAlertWithCustomizedButton();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            More Option : <br> ExecuteAfter - This will be called after the modal creation.<br> ExecuteBefore - This will
+            be called before modal creation.<br>
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.alert(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Hey I am Alert with callback',</line>
+                <line style="padding-left: 40px;">Button:{</line>
+                <line style="padding-left: 50px;">Label:'Ok great !',</line>
+                <line style="padding-left: 50px;">Class:'red'</line>
+                <line style="padding-left: 40px;">},</line>
+                <line style="padding-left: 40px;">ExecuteBefore:function(){</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(){</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runAlertWithExecuteOption();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<script>
+    function runAlertWithCallBack() {
+        DialogBox.alert('Hey I am Alert', function () {
+            Materialize.toast('Alert callback', 3000)
+        });
+    }
+
+    function runAlertWithCustomizedButton() {
+        DialogBox.alert({
+                Text: 'Hey I am Alert with customized button',
+                Button: {
+                    Label: 'Ok great !',
+                    Class: 'red'
+                }
+            },
+            function () {
+                Materialize.toast('I am callback', 3000)
+            }
+        );
+    }
+
+    function runAlertWithExecuteOption() {
+        DialogBox.alert({
+                Text: 'Hey I am Alert with callback',
+                Button: {
+                    Label: 'Ok great !',
+                    Class: 'red'
+                },
+                ExecuteBefore: function () {
+                    Materialize.toast('Execute before called', 3000)
+                }
+            },
+            function () {}
+        );
+    }
+</script>

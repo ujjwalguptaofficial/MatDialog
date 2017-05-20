@@ -1,0 +1,245 @@
+<table class="tableCode">
+    <tr>
+        <th>
+            Default Prompt
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>var MyDialog=new MatDialog();</line>
+                <line>MyDialog.Prompt( 'This is a prompt dialog',function(result){</line>
+                <line style="padding-left:20px;">//callback</line>
+                <line> });</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runPromptWithCallback();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            Prompt with input Type : text, date, number, email, password
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.prompt(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Hey I am prompt Dialog',</line>
+                <line style="padding-left: 40px;">Input:{</line>
+                <line style="padding-left: 50px;">Type:'password',</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(result){</line>
+                <line style="padding-left: 40px;">//callback</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runPromptWithType();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            Prompt with input Type : select,radio,checkbox
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.prompt(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Things you care about?',</line>
+                <line style="padding-left: 40px;">Input:{</line>
+                <line style="padding-left: 50px;">Type:'check',</line>
+                <line style="padding-left: 50px;">Values:</line>
+                <line style="padding-left: 50px;">[ </line>
+                <line style="padding-left: 70px;">{</line>
+                <line style="padding-left: 80px;">Text:'Education',</line>
+                <line style="padding-left: 80px;">Value:'ed'</line>
+                <line style="padding-left: 70px;">},</line>
+                <line style="padding-left: 70px;">{</line>
+                <line style="padding-left: 80px;">Text:'Poverty',</line>
+                <line style="padding-left: 80px;">Value:'po'</line>
+                <line style="padding-left: 70px;">},</line>
+                <line style="padding-left: 70px;">{</line>
+                <line style="padding-left: 80px;">Text:'Religion',</line>
+                <line style="padding-left: 80px;">Value:'re'</line>
+                <line style="padding-left: 70px;">}</line>
+                <line style="padding-left: 50px;">]</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(result){</line>
+                <line style="padding-left: 40px;">//callback</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runPromptWithCType();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            Prompt with customized button
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.prompt(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Hey I am prompt Dialog',</line>
+                <line style="padding-left: 40px;">Buttons:{</line>
+                <line style="padding-left: 50px;">Ok:{</line>
+                <line style="padding-left: 70px;"> Label:'Ok cool !', // you can also add icon</line>
+                <line style="padding-left: 70px;">Class:'green'</line>
+                <line style="padding-left: 50px;">},</line>
+                <line style="padding-left: 50px;">Cancel:{</line>
+                <line style="padding-left: 70px;"> Label:'Not cool !',</line>
+                <line style="padding-left: 70px;">Class:'red'</line>
+                <line style="padding-left: 50px;">}</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(result){</line>
+                <line style="padding-left: 40px;">//callback</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runPromptWithCustomizedButton();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th>
+            More Option : <br> ExecuteAfter - This will be called after the modal creation.<br> ExecuteBefore - This will
+            be called before modal creation.<br>
+        </th>
+        <th>
+
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>MyDialog.prompt(</line>
+                <line style="padding-left: 20px;">{</line>
+                <line style="padding-left: 40px;">Text:'Hey I am confirm',</line>
+                <line style="padding-left: 40px;">Button:{</line>
+                <line style="padding-left: 50px;">Label:'Ok great !',</line>
+                <line style="padding-left: 50px;">Class:'red'</line>
+                <line style="padding-left: 40px;">},</line>
+                <line style="padding-left: 40px;">ExecuteAfter:function(){</line>
+                <line style="padding-left: 40px;">}</line>
+                <line style="padding-left: 20px;">},</line>
+                <line style="padding-left: 20px;">function(result){</line>
+                 <line style="padding-left: 40px;">//callback</line>
+                <line style="padding-left: 20px;">}</line>
+                <line>);</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runPromptWithExecuteOption();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<script>
+    function runPromptWithCallback() {
+        DialogBox.prompt('This is a prompt dialog', function (result) {
+            Materialize.toast('You Entered: ' + result, 3000)
+        });
+    }
+
+    function runPromptWithExecuteOption() {
+        DialogBox.prompt({
+            Text: 'Hey I am confirm',
+            Button: {
+                Label: 'Ok great !',
+                Class: 'red'
+            },
+            ExecuteAfter: function () {
+                Materialize.toast('Execute After called', 3000)
+            }
+        });
+    }
+
+    function runPromptWithCustomizedButton() {
+        DialogBox.prompt({
+                Text: 'Hey I am Prompt Dialog',
+                Buttons: {
+                    Ok: {
+                        Label: 'Ok cool !',
+                        Class: 'green'
+                    },
+                    Cancel: {
+                        Label: 'Not cool !',
+                        Class: 'red'
+                    }
+                }
+            },
+            function (result) {
+                Materialize.toast('You Pressed: ' + result, 3000)
+            }
+        );
+    }
+
+    function runPromptWithType() {
+        DialogBox.prompt({
+                Text: 'Hey I am prompt Dialog',
+                Input: {
+                    Type: 'password',
+                }
+            },
+            function (result) {
+                Materialize.toast('You Pressed: ' + result, 3000)
+            }
+        );
+    }
+
+    function runPromptWithCType() {
+        DialogBox.prompt({
+                Text: 'Things you care about?',
+                Input: {
+                    Type: 'check',
+                    Values: [{
+                        Text: 'Education',
+                        Value: 'ed'
+                    }, {
+                        Text: 'Poverty',
+                        Value: 'po'
+                    }, {
+                        Text: 'Religion',
+                        Value: 're'
+                    }]
+                }
+            },
+            function (result) {
+                Materialize.toast('You Pressed: ' + result, 3000)
+            }
+        );
+    }
+</script>

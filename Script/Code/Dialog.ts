@@ -4,7 +4,7 @@ interface IDialog {
         ShowClose: boolean
     },
     Content: {
-        Text: string,
+        Label: string,
         Class: string
     },
     ButtonType: string
@@ -37,7 +37,7 @@ module MatDialogs {
             }
             //Content
             if (option.Content) {
-                ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Text + '</div>';
+                ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Label + '</div>';
             }
             //Button
             var BottomHtml = "";

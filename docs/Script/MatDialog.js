@@ -133,8 +133,8 @@ var MatDialogs;
     var Prompt = (function () {
         function Prompt(option) {
             this.getInnerContent = function (input) {
-                var InnerContent;
-                switch (input.Type) {
+                var Type = (!input || !input.Type) ? 'Text' : input.Type;
+                switch (Type) {
                     case 'text':
                     case 'date':
                     case 'number':
