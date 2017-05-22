@@ -363,8 +363,8 @@ var MatDialogs;
                 //Title
                 if (option.Title) {
                     ElementInnerHTML += '<div class="modal-header">';
-                    if (option.Title.Text) {
-                        ElementInnerHTML += '<span class="prompt-msg">' + option.Title.Text + '</span>';
+                    if (option.Title.Label) {
+                        ElementInnerHTML += '<span class="prompt-msg">' + option.Title.Label + '</span>';
                     }
                     if (option.Title.ShowClose == undefined || JSON.parse(option.Title.ShowClose)) {
                         ElementInnerHTML += '<i class="modal-button material-icons right-align header-close-icon">&#xE5CD;</i>';
@@ -373,7 +373,7 @@ var MatDialogs;
                 }
                 //Content
                 if (option.Content) {
-                    ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Text + '</div>';
+                    ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Label + '</div>';
                 }
                 //Button
                 var BottomHtml = "";
@@ -388,9 +388,10 @@ var MatDialogs;
                     }
                 }
                 else if (option.Buttons) {
-                    option.Buttons.forEach(function (item) {
-                        BottomHtml = '<a href="#!" data-val=' + item.Value + 'class="modal-button btn waves-effect waves-green prompt btn-ok ' + (item.Class ? item.Class : "") + '">' + item.Label + '</a>';
-                    });
+                    for (var item, i = option.Buttons.length - 1; i >= 0; i--) {
+                        item = option.Buttons[i];
+                        BottomHtml += '<a href="#!" data-val="' + item.Value + '" class="modal-button btn waves-effect waves-green btns ' + (item.Class ? item.Class : "") + '">' + item.Label + '</a>';
+                    }
                 }
                 if (BottomHtml.length > 0) {
                     ElementInnerHTML += '<div class="divider"></div><div class="modal-footer">' + BottomHtml + '</div>';

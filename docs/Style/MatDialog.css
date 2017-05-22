@@ -25,6 +25,10 @@
     margin-right: 8px !important;
 }
 
+#divMatDialog .modal .btns {
+    margin-left: 8px !important;
+}
+
 #divMatDialog .modal .prompt-msg {
     padding-left: 15px;
     font-size: 17px;

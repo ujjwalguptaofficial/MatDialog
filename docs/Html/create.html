@@ -2,11 +2,11 @@ Create takes a javascript object, which should have format like this - <br>
 <pre>
     {
         Title: {
-            Text: string,
+            Label: string,
             ShowClose: boolean
         },
         Content: {
-            Text: string,
+            Label: string,
             Class: string
         },
         ButtonType: string
@@ -22,11 +22,8 @@ Create takes a javascript object, which should have format like this - <br>
 <div class="divider"></div>
 <table class="tableCode">
     <tr>
-        <th>
+        <th colspan="2">
             Simple Customize Dialog
-        </th>
-        <th>
-
         </th>
     </tr>
     <tr>
@@ -35,7 +32,7 @@ Create takes a javascript object, which should have format like this - <br>
                 <line>//Assumimg we have already created the object.</line>
                 <line>MyDialog.create({</line>
                 <line style="padding-left:20px;">Content:{</line>
-                <line style="padding-left:40px;"> Text:'I am customized dialog box',</line>
+                <line style="padding-left:40px;"> Label:'I am customized dialog box',</line>
                 <line style="padding-left:40px;"> Class:'#cddc39 lime',</line>
                 <line style="padding-left:20px;">}</line>
                 <line>});</line>
@@ -48,68 +45,57 @@ Create takes a javascript object, which should have format like this - <br>
 </table>
 <table class="tableCode">
     <tr>
-        <th>
-            Prompt with input Type : text, date, number, email, password
-        </th>
-        <th>
-
+        <th colspan="2">
+            Customize Dialog With Title
         </th>
     </tr>
     <tr>
         <td>
             <div class="pre">
-                <line>MyDialog.prompt(</line>
-                <line style="padding-left: 20px;">{</line>
-                <line style="padding-left: 40px;">Text:'Hey I am prompt Dialog',</line>
-                <line style="padding-left: 40px;">Input:{</line>
-                <line style="padding-left: 50px;">Type:'password',</line>
-                <line style="padding-left: 40px;">}</line>
-                <line style="padding-left: 20px;">},</line>
-                <line style="padding-left: 20px;">function(result){</line>
-                <line style="padding-left: 40px;">//callback</line>
-                <line style="padding-left: 20px;">}</line>
-                <line>);</line>
+                <line>MyDialog.create({</line>
+                <line style="padding-left:20px;">Content:{</line>
+                <line style="padding-left:40px;"> Label:'I am customized dialog box',</line>
+                <line style="padding-left:40px;"> Class:'#cddc39 lime',</line>
+                <line style="padding-left:20px;">},</line>
+                <line style="padding-left:20px;">Title:{</line>
+                <line style="padding-left:40px;"> Label:'Hi',</line>
+                <line style="padding-left:40px;"> ShowClose:true,</line>
+                <line style="padding-left:20px;">}</line>
+                <line>});</line>
             </div>
         </td>
         <td class="center-align">
-            <button class="btn" onclick="runPromptWithType();">Run Example</button>
+            <button class="btn" onclick="runCustomDialogWithAlert();">Run Example</button>
         </td>
     </tr>
 </table>
 <table class="tableCode">
     <tr>
-        <th>
-            Prompt with input Type : select,radio,checkbox
-        </th>
-        <th>
-
+        <th colspan="2">
+            Customize Dialog With Buttons
         </th>
     </tr>
     <tr>
         <td>
             <div class="pre">
-                <line>MyDialog.prompt(</line>
-                <line style="padding-left: 20px;">{</line>
-                <line style="padding-left: 40px;">Text:'Things you care about?',</line>
-                <line style="padding-left: 40px;">Input:{</line>
-                <line style="padding-left: 50px;">Type:'check',</line>
-                <line style="padding-left: 50px;">Values:</line>
-                <line style="padding-left: 50px;">[ </line>
-                <line style="padding-left: 70px;">{</line>
-                <line style="padding-left: 80px;">Text:'Education',</line>
-                <line style="padding-left: 80px;">Value:'ed'</line>
-                <line style="padding-left: 70px;">},</line>
-                <line style="padding-left: 70px;">{</line>
-                <line style="padding-left: 80px;">Text:'Poverty',</line>
-                <line style="padding-left: 80px;">Value:'po'</line>
-                <line style="padding-left: 70px;">},</line>
-                <line style="padding-left: 70px;">{</line>
-                <line style="padding-left: 80px;">Text:'Religion',</line>
-                <line style="padding-left: 80px;">Value:'re'</line>
-                <line style="padding-left: 70px;">}</line>
-                <line style="padding-left: 50px;">]</line>
-                <line style="padding-left: 40px;">}</line>
-                <line style="padding-left: 20px;">},</line>
+                <line>MyDialog.create({</line>
+                <line style="padding-left:20px;">Content:{</line>
+                <line style="padding-left:40px;"> Label:'I am customized dialog box',</line>
+                <line style="padding-left:40px;"> Class:'#cddc39 lime',</line>
+                <line style="padding-left:20px;">},</line>
+                <line style="padding-left:20px;">Buttons:[{</line>
+                <line style="padding-left:40px;"> Label:'Button1',</line>
+                <line style="padding-left:40px;"> Class:'#388e3c green darken-2',</line>
+                <line style="padding-left:20px;">},</line>
+                <line style="padding-left:20px;">{</line>
+                <line style="padding-left:40px;">Label:'Button2',</line>
+                <line style="padding-left:40px;">Class:'#00b8d4 cyan accent-4',</line>
+                <line style="padding-left:20px;">},</line>
+                <line style="padding-left:20px;">{</line>
+                <line style="padding-left:40px;">Label:'Button3',</line>
+                <line style="padding-left:40px;">Class:'#ad1457 pink darken-3',</line>
+                <line style="padding-left:20px;">}]</line>
+                <line>},</line>
                 <line style="padding-left: 20px;">function(result){</line>
                 <line style="padding-left: 40px;">//callback</line>
                 <line style="padding-left: 20px;">}</line>
@@ -117,90 +103,62 @@ Create takes a javascript object, which should have format like this - <br>
             </div>
         </td>
         <td class="center-align">
-            <button class="btn" onclick="runPromptWithCType();">Run Example</button>
+            <button class="btn" onclick="runCustomDialogWithButtons();">Run Example</button>
         </td>
     </tr>
-</table>
-<table class="tableCode">
     <tr>
-        <th>
-            Prompt with customized button
+        <th colspan="2">
+            Note : you can also mention ButtonType: Alert or Prompt to get the already defined buttons.
         </th>
-        <th>
+    </tr>
+</table>
 
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <div class="pre">
-                <line>MyDialog.prompt(</line>
-                <line style="padding-left: 20px;">{</line>
-                <line style="padding-left: 40px;">Text:'Hey I am prompt Dialog',</line>
-                <line style="padding-left: 40px;">Buttons:{</line>
-                <line style="padding-left: 50px;">Ok:{</line>
-                <line style="padding-left: 70px;"> Label:'Ok cool !', // you can also add icon</line>
-                <line style="padding-left: 70px;">Class:'green'</line>
-                <line style="padding-left: 50px;">},</line>
-                <line style="padding-left: 50px;">Cancel:{</line>
-                <line style="padding-left: 70px;"> Label:'Not cool !',</line>
-                <line style="padding-left: 70px;">Class:'red'</line>
-                <line style="padding-left: 50px;">}</line>
-                <line style="padding-left: 40px;">}</line>
-                <line style="padding-left: 20px;">},</line>
-                <line style="padding-left: 20px;">function(result){</line>
-                <line style="padding-left: 40px;">//callback</line>
-                <line style="padding-left: 20px;">}</line>
-                <line>);</line>
-            </div>
-        </td>
-        <td class="center-align">
-            <button class="btn" onclick="runPromptWithCustomizedButton();">Run Example</button>
-        </td>
-    </tr>
-</table>
-<table class="tableCode">
-    <tr>
-        <th>
-            More Option : <br> ExecuteAfter - This will be called after the modal creation.<br> ExecuteBefore - This will
-            be called before modal creation.<br>
-        </th>
-        <th>
-
-        </th>
-    </tr>
-    <tr>
-        <td>
-            <div class="pre">
-                <line>MyDialog.prompt(</line>
-                <line style="padding-left: 20px;">{</line>
-                <line style="padding-left: 40px;">Text:'Hey I am confirm',</line>
-                <line style="padding-left: 40px;">Button:{</line>
-                <line style="padding-left: 50px;">Label:'Ok great !',</line>
-                <line style="padding-left: 50px;">Class:'red'</line>
-                <line style="padding-left: 40px;">},</line>
-                <line style="padding-left: 40px;">ExecuteAfter:function(){</line>
-                <line style="padding-left: 40px;">}</line>
-                <line style="padding-left: 20px;">},</line>
-                <line style="padding-left: 20px;">function(result){</line>
-                <line style="padding-left: 40px;">//callback</line>
-                <line style="padding-left: 20px;">}</line>
-                <line>);</line>
-            </div>
-        </td>
-        <td class="center-align">
-            <button class="btn" onclick="runPromptWithExecuteOption();">Run Example</button>
-        </td>
-    </tr>
-</table>
 <script>
     function runCustomDialog() {
         DialogBox.create({
             Content: {
-                Text: 'I am customized dialog box',
+                Label: 'I am customized dialog box',
                 Class: '#cddc39 lime',
             }
         });
-
     }
 
+    function runCustomDialogWithAlert() {
+        DialogBox.create({
+            Content: {
+                Label: 'I am customized dialog box',
+                Class: '#cddc39 lime',
+            },
+            Title: {
+                Text: 'Hi',
+                ShowClose: true,
+            }
+        });
+    }
+
+    function runCustomDialogWithButtons() {
+        DialogBox.create({
+                Content: {
+                    Label: 'I am customized dialog box',
+                    Class: '#cddc39 lime',
+                },
+                Buttons: [{
+                        Label: 'Button1',
+                        Class: '#388e3c green darken-2',
+                    },
+                    {
+                        Label: 'Button2',
+                        Class: '#00b8d4 cyan accent-4',
+                    },
+                    {
+                        Label: 'Button3',
+                        Class: '#ad1457 pink darken-3',
+                    }
+                ]
+            },
+            function (result) {
+                Materialize.toast('You Pressed: ' + result, 3000)
+            }
+        );
+    }
 </script>
