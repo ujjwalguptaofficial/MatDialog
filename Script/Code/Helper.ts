@@ -9,19 +9,20 @@ class Helper {
         //registering button click
         $('#divMatDialog .modal').on('click', '.modal-button', function () {
             var Modal = $('#divMatDialog .modal'),
-                DialogType = Modal.data('type');
+                DialogType = Modal.data('type'),
+                Value = $(this).data('val');
             Modal.modal('close');
+            (Value == null) ? false : Value;
+
             if (That.CallBack != null) {
                 if (DialogType == 'alert') {
                     That.CallBack();
                 }
-                else if (DialogType == 'confirm' || DialogType == 'dialog') {
-                    var Value = $(this).data('val');
-                    That.CallBack(Value != null ? JSON.parse(Value) : false);
+                else if (DialogType == 'confirm') {
+                    That.CallBack(JSON.parse(Value));
                 }
                 else if (DialogType == 'prompt') {
-                    var Value = $(this).data('val');
-                    if (Value != null ? JSON.parse(Value) : false) {
+                    if (JSON.parse(Value)) {
                         var InputValue;
                         if (That.Option.Input) {
                             InputValue = That.getPromptInputValue(That.Option.Input.Type);
@@ -34,6 +35,9 @@ class Helper {
                     else {
                         That.CallBack(null);
                     }
+                }
+                else if (DialogType == 'create') {
+                    That.CallBack(Value);
                 }
             }
         });

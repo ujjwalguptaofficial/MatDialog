@@ -44,11 +44,11 @@ module MatDialogs {
             if (option.ButtonType) {
                 var CancelLabel = 'Cancel', OkLabel = 'Ok';
                 if (option.ButtonType.toLowerCase() == 'alert') {
-                    BottomHtml = '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
+                    BottomHtml = '<a href="#" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
                 }
                 else {
-                    BottomHtml = '<a href="#!" data- val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel" > ' + CancelLabel + ' </a>' +
-                        '<a href="#!" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
+                    BottomHtml = '<a href="#" data-val="false" class="modal-button btn waves-effect waves-green prompt btn-cancel" > ' + CancelLabel + ' </a>' +
+                        '<a href="#" data-val="true" class="modal-button btn waves-effect waves-green prompt btn-ok">' + OkLabel + '</a>';
                 }
             }
             else if (option.Buttons) {
@@ -61,7 +61,7 @@ module MatDialogs {
             if (BottomHtml.length > 0) {
                 ElementInnerHTML += '<div class="divider"></div><div class="modal-footer">' + BottomHtml + '</div>';
             }
-            $('#divMatDialog .modal').data('type', 'dialog').html(ElementInnerHTML);
+            $('#divMatDialog .modal').html(ElementInnerHTML).data('type', 'create');
             if (option.ExecuteAfter) {
                 option.ExecuteAfter();
             }
