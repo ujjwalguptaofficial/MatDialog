@@ -1,0 +1,89 @@
+This is the default configuration.
+<pre>
+    {
+            Dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            EndingTop: '2%', // Ending top style attribute
+            InDuration: 300, // Transition in duration
+            OutDuration: 200, // Transition out duration
+            Opacity: 0.5, // Opacity of modal background
+            StartingTop: '2%' // Starting top style attribute
+    }
+</pre>
+<br>You can pass this json object to change the config. Check out the below example.<br><br>
+<table class="tableCode">
+    <tr>
+        <th colspan="2">
+            Using Constructor
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>var MyDialog=new MatDialog({</line>
+                <line style="padding-left:40px;">Dismissible: true, </line>
+                <line style="padding-left:40px;">EndingTop: '5%', </line>
+                <line style="padding-left:40px;">InDuration: 500, </line>
+                <line style="padding-left:40px;">OutDuration: 1000, </line>
+                <line style="padding-left:40px;">Opacity: 0.1, </line>
+                <line style="padding-left:40px;">StartingTop: '10%' </line>
+                <line> });</line>
+                <line>MyDialog.alert('config dialog');</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runConfigAlert();">Run Example</button>
+        </td>
+    </tr>
+</table>
+<table class="tableCode">
+    <tr>
+        <th colspan="2">
+            Using setModalConfig - you can use this to change config at any time.
+        </th>
+    </tr>
+    <tr>
+        <td>
+            <div class="pre">
+                <line>var MyDialog=new MatDialog();</line>
+                <line>MyDialog.setModalConfig({</line>
+                <line style="padding-left:40px;">Dismissible: false, </line>
+                <line style="padding-left:40px;">EndingTop: '5%', </line>
+                <line style="padding-left:40px;">InDuration: 500, </line>
+                <line style="padding-left:40px;">OutDuration: 1000, </line>
+                <line style="padding-left:40px;">Opacity: 0.1, </line>
+                <line style="padding-left:40px;">StartingTop: '10%' </line>
+                <line> });</line>
+                <line>MyDialog.alert('config dialog');</line>
+            </div>
+        </td>
+        <td class="center-align">
+            <button class="btn" onclick="runSetConfigAlert();">Run Example</button>
+        </td>
+    </tr>
+</table>
+
+<script>
+    function runConfigAlert() {
+        var MyDialog = new MatDialog({
+            Dismissible: true,
+            EndingTop: '5%',
+            InDuration: 500,
+            OutDuration: 1000,
+            Opacity: 0.1,
+            StartingTop: '10%'
+        });
+        MyDialog.alert('config dialog');
+    }
+
+    function runSetConfigAlert() {
+        DialogBox.setModalConfig({
+            Dismissible: false,
+            EndingTop: '5%',
+            InDuration: 500,
+            OutDuration: 1000,
+            Opacity: 0.1,
+            StartingTop: '10%'
+        });
+        DialogBox.alert('config dialog');
+    }
+</script>

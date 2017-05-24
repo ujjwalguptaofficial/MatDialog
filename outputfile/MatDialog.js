@@ -87,7 +87,7 @@ var Helper = (function () {
             if (config) {
                 //registering modal
                 $('.modal').modal({
-                    dismissible: config.Dismissible ? config.Dismissible : DefaultConfig.Dismissible,
+                    dismissible: config.Dismissible != null ? config.Dismissible : DefaultConfig.Dismissible,
                     opacity: config.Opacity ? config.Opacity : DefaultConfig.Opacity,
                     inDuration: config.InDuration ? config.InDuration : DefaultConfig.InDuration,
                     outDuration: config.OutDuration ? config.OutDuration : DefaultConfig.OutDuration,
@@ -268,15 +268,14 @@ var MatDialog = (function (_super) {
         _this.setModalConfig = function (config) {
             this.registerModal(config);
         };
-        var That = _this;
         //create a matdialog container
         if (document.getElementById('divMatDialog') == null) {
             var container = document.createElement('div');
             container.id = 'divMatDialog';
             container.innerHTML = '<div class="modal"></div>';
             document.body.appendChild(container);
-            _this.registerModal(config);
         }
+        _this.registerModal(config);
         return _this;
     }
     MatDialog.prototype.alert = function (message, callBack) {

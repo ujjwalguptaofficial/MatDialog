@@ -13,8 +13,8 @@ nav .brand-logo {
     font-family: monospace;
 }
 
-.nav-content {
-    padding-top: 180px;
+nav.nav-extended .nav-wrapper {
+    height: 270px;
 }
 
 .btn {

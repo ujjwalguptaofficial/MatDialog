@@ -90,12 +90,12 @@ class Helper {
 
     protected registerModal = function (config: IDialogOption) {
         var DefaultConfig = <IDialogOption>{
-            Dismissible: true,
-            EndingTop: '2%',
-            InDuration: 300,
-            OutDuration: 200,
-            Opacity: 0.5,
-            StartingTop: '2%',
+            Dismissible: true, // Modal can be dismissed by clicking outside of the modal
+            EndingTop: '2%', // Ending top style attribute,
+            InDuration: 300, // Transition in duration
+            OutDuration: 200, // Transition out duration
+            Opacity: 0.5, // Opacity of modal background
+            StartingTop: '2%', // Starting top style attribute
             OnCompleted: function () {
                 $('#divMatDialog .modal').off('click', '.modal-button');
                 $('body').off('click', '.modal-overlay');
@@ -104,12 +104,12 @@ class Helper {
         if (config) {
             //registering modal
             $('.modal').modal({
-                dismissible: config.Dismissible ? config.Dismissible : DefaultConfig.Dismissible, // Modal can be dismissed by clicking outside of the modal
-                opacity: config.Opacity ? config.Opacity : DefaultConfig.Opacity, // Opacity of modal background
-                inDuration: config.InDuration ? config.InDuration : DefaultConfig.InDuration, // Transition in duration
-                outDuration: config.OutDuration ? config.OutDuration : DefaultConfig.OutDuration, // Transition out duration
-                startingTop: config.StartingTop ? config.StartingTop : DefaultConfig.StartingTop, // Starting top style attribute
-                endingTop: config.EndingTop ? config.EndingTop : DefaultConfig.EndingTop, // Ending top style attribute,
+                dismissible: config.Dismissible != null ? config.Dismissible : DefaultConfig.Dismissible,
+                opacity: config.Opacity ? config.Opacity : DefaultConfig.Opacity,
+                inDuration: config.InDuration ? config.InDuration : DefaultConfig.InDuration,
+                outDuration: config.OutDuration ? config.OutDuration : DefaultConfig.OutDuration,
+                startingTop: config.StartingTop ? config.StartingTop : DefaultConfig.StartingTop,
+                endingTop: config.EndingTop ? config.EndingTop : DefaultConfig.EndingTop,
                 complete: DefaultConfig.OnCompleted
             });
         }
