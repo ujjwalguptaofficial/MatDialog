@@ -10,6 +10,7 @@ var __extends = (this && this.__extends) || (function () {
 })();
 var Helper = (function () {
     function Helper() {
+        this.IsDismissible = false;
         this.openModal = function (callBack, isInput) {
             this.CallBack = callBack;
             var That = this;
@@ -48,7 +49,7 @@ var Helper = (function () {
             });
             //registering modal overlay
             $('body').on('click', '.modal-overlay', function () {
-                if (That.CallBack != null) {
+                if (That.CallBack != null && That.IsDismissible) {
                     var DialogType = $('#divMatDialog .modal').data('type');
                     if (DialogType == 'alert') {
                         That.CallBack();
@@ -85,6 +86,7 @@ var Helper = (function () {
                 }
             };
             if (config) {
+                this.IsDismissible = config.Dismissible == null ? false : config.Dismissible;
                 //registering modal
                 $('.modal').modal({
                     dismissible: config.Dismissible != null ? config.Dismissible : DefaultConfig.Dismissible,

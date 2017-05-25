@@ -1,6 +1,7 @@
 class Helper {
     CallBack: Function;
     Option: IPrompt;
+    IsDismissible: boolean = false;
 
     protected openModal = function (callBack: Function, isInput?: boolean) {
         this.CallBack = callBack;
@@ -44,7 +45,7 @@ class Helper {
 
         //registering modal overlay
         $('body').on('click', '.modal-overlay', function () {
-            if (That.CallBack != null) {
+            if (That.CallBack != null && That.IsDismissible) {
                 var DialogType = $('#divMatDialog .modal').data('type');
                 if (DialogType == 'alert') {
                     That.CallBack();
@@ -102,6 +103,7 @@ class Helper {
             }
         }
         if (config) {
+            this.IsDismissible = config.Dismissible == null ? false : config.Dismissible;
             //registering modal
             $('.modal').modal({
                 dismissible: config.Dismissible != null ? config.Dismissible : DefaultConfig.Dismissible,
