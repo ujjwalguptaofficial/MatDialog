@@ -1,3 +1,6 @@
+/*! MatDialog.js - v1.0.0 - 27/5/2017
+ * https://ujjwalguptaofficial.github.io/MatDialog/
+ * Copyright (c) 2017 @Ujjwal Gupta; Licensed Apache2.0 */
 var __extends = (this && this.__extends) || (function () {
     var extendStatics = Object.setPrototypeOf ||
         ({ __proto__: [] } instanceof Array && function (d, b) { d.__proto__ = b; }) ||
@@ -15,7 +18,6 @@ var Helper = (function () {
             this.CallBack = callBack;
             var That = this;
             $('#divMatDialog .modal').modal('open');
-            //registering button click
             $('#divMatDialog .modal').on('click', '.modal-button', function () {
                 var Modal = $('#divMatDialog .modal'), DialogType = Modal.data('type'), Value = $(this).data('val');
                 Modal.modal('close');
@@ -47,7 +49,6 @@ var Helper = (function () {
                     }
                 }
             });
-            //registering modal overlay
             $('body').on('click', '.modal-overlay', function () {
                 if (That.CallBack != null && That.IsDismissible) {
                     var DialogType = $('#divMatDialog .modal').data('type');
@@ -87,7 +88,6 @@ var Helper = (function () {
             };
             if (config) {
                 this.IsDismissible = config.Dismissible == null ? false : config.Dismissible;
-                //registering modal
                 $('.modal').modal({
                     dismissible: config.Dismissible != null ? config.Dismissible : DefaultConfig.Dismissible,
                     opacity: config.Opacity ? config.Opacity : DefaultConfig.Opacity,
@@ -270,7 +270,6 @@ var MatDialog = (function (_super) {
         _this.setModalConfig = function (config) {
             this.registerModal(config);
         };
-        //create a matdialog container
         if (document.getElementById('divMatDialog') == null) {
             var container = document.createElement('div');
             container.id = 'divMatDialog';
@@ -304,11 +303,6 @@ var MatDialog = (function (_super) {
     };
     return MatDialog;
 }(Helper));
-/// <reference path="jquery.d.ts" />
-/// <reference path="Code/Helper.ts" />
-/// <reference path="Code/Prompt.ts" />
-/// <reference path="Code/Alert.ts" />
-/// <reference path="Code/MainLogic.ts" />
 ;
 var MatDialogs;
 (function (MatDialogs) {
@@ -363,7 +357,6 @@ var MatDialogs;
                     option.ExecuteBefore();
                 }
                 var ElementInnerHTML = '';
-                //Title
                 if (option.Title) {
                     ElementInnerHTML += '<div class="modal-header">';
                     if (option.Title.Label) {
@@ -374,11 +367,9 @@ var MatDialogs;
                     }
                     ElementInnerHTML += '</div><div class="divider"></div>';
                 }
-                //Content
                 if (option.Content) {
                     ElementInnerHTML += '<div class="modal-content ' + (option.Content.Class ? option.Content.Class : "") + '">' + option.Content.Label + '</div>';
                 }
-                //Button
                 var BottomHtml = "";
                 if (option.ButtonType) {
                     var CancelLabel = 'Cancel', OkLabel = 'Ok';

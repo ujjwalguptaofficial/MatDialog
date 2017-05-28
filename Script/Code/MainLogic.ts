@@ -1,3 +1,4 @@
+
 interface IDialogOption {
     Dismissible: Boolean, // Modal can be dismissed by clicking outside of the modal
     Opacity: number, // Opacity of modal background
